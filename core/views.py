@@ -14,6 +14,12 @@ def index(request):
     contact = Contact.objects.all()
     link = Link.objects.all()
     testimonial = Testimonial.objects.all()
+    category = request.GET.get('category')
+    if category == None:
+        projects = Project.objects.all()
+    else:
+        projects = Project.objects.filter(category__name=category)
+    categories = Category.objects.all()
 
     context = {
         'about': about,
@@ -25,15 +31,24 @@ def index(request):
         'contact': contact,
         'link': link,
         'testimonial': testimonial,
+        'categories': categories,
     }
 
     return render(request, 'index.html', context)
 
-def details(request):
-    return render(request, 'portfolio-details.html')
+def details(request, id):
+    project = Project.objects.get(id=id)
+    context = {
+        'project': project,
+    }
+    return render(request, 'portfolio-details.html', context)
 
-def services(request):
-    return render(request, 'service-details.html')
+def services(request, id):
+    service = Service.objects.get(id=id)
+    context = {
+        'service': service,
+    }
+    return render(request, 'service-details.html', context)
 
 def base(request):
     return render(request, 'base.html')

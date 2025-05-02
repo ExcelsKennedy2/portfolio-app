@@ -314,24 +314,30 @@
 
           <div class="portfolio-filters-container" data-aos="fade-up" data-aos-delay="200">
             <ul class="portfolio-filters isotope-filters">
-              <li data-filter="*" class="filter-active">All Work</li>
-              <li data-filter=".filter-web">Web Design</li>
-              <li data-filter=".filter-graphics">Graphics</li>
-              <li data-filter=".filter-motion">Motion</li>
-              <li data-filter=".filter-brand">Branding</li>
+              <li data-filter="*" class="filter-active"><a href="{% url 'home' %}" class="text-white">All Work</a></li>
+                {% for category in categories %}
+              <li data-filter=".filter-web"><a href="{% url 'home' %}?category={{ category.name }}" >{{ category.name }}</a></li>
+{#              <li data-filter=".filter-graphics">Graphics</li>#}
+{#              <li data-filter=".filter-motion">Motion</li>#}
+{#              <li data-filter=".filter-brand">Branding</li>#}
+                {% empty %}
+                    <li>No Categories Added</li>
+                  {% endfor %}
+
             </ul>
+
           </div>
 
           <div class="row g-4 isotope-container" data-aos="fade-up" data-aos-delay="300">
             {% for p in projects %}
-            <div class="col-lg-6 col-md-6 portfolio-item isotope-item filter-web">
+            <div class="col-lg-6 col-md-6 portfolio-item isotope-item">
               <div class="portfolio-card">
                 <div class="portfolio-image">
                   <img src="{{ p.image.url }}" class="img-fluid" alt="{{ p.name }}" loading="lazy">
                   <div class="portfolio-overlay">
                     <div class="portfolio-actions">
                       <a href="{{ p.image.url }}" class="glightbox preview-link" data-gallery="portfolio-gallery-web"><i class="bi bi-eye"></i></a>
-                      <a href="{% url 'details' %}" class="details-link"><i class="bi bi-arrow-right"></i></a>
+                      <a href="{% url 'details' p.id %}" class="details-link"><i class="bi bi-arrow-right"></i></a>
                     </div>
                   </div>
                 </div>
@@ -456,7 +462,7 @@
               <div class="col-md-6" data-aos="fade-up" data-aos-delay="200">
                 <div class="service-item">
                   <i class="bi bi-activity icon"></i>
-                  <h3><a href="{% url 'services' %}">{{ post.name }}</a></h3>
+                  <h3><a href="{% url 'services' post.id %}">{{ post.name }}</a></h3>
                   <p>{{ post.description }}</p>
                 </div>
               </div>

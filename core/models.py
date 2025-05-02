@@ -1,4 +1,5 @@
 from django.db import models
+from ckeditor.fields import RichTextField
 
 class About(models.Model):
     image = models.ImageField(upload_to='images/')
@@ -10,7 +11,7 @@ class About(models.Model):
     nationality = models.CharField(max_length=100, null=True, blank=True)
     address = models.CharField(max_length=100, null=True, blank=True)
     position = models.CharField(max_length=100)
-    description = models.TextField()
+    description = RichTextField(blank=True, null=True)
     signature = models.ImageField(upload_to='signatures/', null=True, blank=True)
     resume = models.FileField(upload_to='resumes/')
     experience = models.IntegerField(default=0)
@@ -42,7 +43,7 @@ class Experience(models.Model):
     start_date = models.CharField(max_length=4, null=True, blank=True)
     end_date = models.CharField(max_length=4, null=True, blank=True)
     title = models.CharField(max_length=100)
-    content = models.TextField()
+    content = RichTextField(blank=True, null=True)
 
     def __str__(self) -> str:
         return self.title
@@ -58,7 +59,7 @@ class Project(models.Model):
     name = models.CharField(max_length=100)
     source_code = models.URLField(max_length=500)
     view_project = models.URLField(max_length=500)
-    description = models.TextField()
+    description = RichTextField(blank=True, null=True)
 
     def __str__(self) -> str:
         return self.name
@@ -68,11 +69,11 @@ class Testimonial(models.Model):
     client_position = models.CharField(max_length=100)
     testimonial_name = models.CharField(max_length=100)
     client_image = models.ImageField(upload_to='testimonials/')
-    description = models.TextField(null=True, blank=True)
+    description = RichTextField(blank=True, null=True)
 
 class Service(models.Model):
     name = models.CharField(max_length=100)
-    description = models.TextField()
+    description = RichTextField(blank=True, null=True)
 
     def __str__(self) -> str:
         return self.name
@@ -81,7 +82,7 @@ class Contact(models.Model):
     name = models.CharField(max_length=100)
     email = models.EmailField()
     subject = models.CharField(max_length=100)
-    message = models.TextField()
+    message = RichTextField(blank=True, null=True)
 
     def __str__(self) -> str:
         return self.subject

@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
 from pathlib import Path
+import dj_database_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -77,13 +78,17 @@ WSGI_APPLICATION = 'portfolio.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+    'default': dj_database_url.config(
+        default="postgresql://Portfoliodb_owner:npg_L6uAI3oUeWgq@ep-green-bush-a8absr9i-pooler.eastus2.azure.neon.tech/Portfoliodb?sslmode=require"
+    )
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
@@ -128,3 +133,21 @@ CKEDITOR_UPLOAD_PATH = 'content/ckeditor/'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
+
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': 'datdnaklu',
+    'API_KEY': '343955362941129',
+    'API_SECRET': 'EHXrX9cyruZl-JxsAzlD_QXx1Hs',
+}
+
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+
+cloudinary.config(
+    cloud_name="datdnaklu",
+    api_key="343955362941129",
+    api_secret="EHXrX9cyruZl-JxsAzlD_QXx1Hs",
+    secure=True
+)

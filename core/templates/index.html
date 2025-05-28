@@ -461,7 +461,7 @@
                 <div class="service-item">
                   <i class="bi bi-activity icon"></i>
                   <h3><a href="{% url 'services' post.id %}">{{ post.name }}</a></h3>
-                  <p>{{ post.description }}</p>
+                  <p>{{ post.description|truncatewords:10 }}</p>
                 </div>
               </div>
                 {% empty %}

@@ -53,6 +53,8 @@ class Category(models.Model):
     def __str__(self) -> str:
         return self.name
 
+from django.utils import timezone
+
 class Project(models.Model):
     category = models.ForeignKey(Category, on_delete=models.SET_NULL, null=True, blank=True)
     image = models.ImageField(upload_to='images/')
@@ -60,6 +62,12 @@ class Project(models.Model):
     source_code = models.URLField(max_length=500)
     view_project = models.URLField(max_length=500)
     description = RichTextField(blank=True, null=True)
+    created = models.DateTimeField(default=timezone.now)  # Add this line
+
+    class Meta:
+        ordering = ['-created']  # Orders by newest first
+
+
 
     def __str__(self) -> str:
         return self.name

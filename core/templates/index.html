@@ -129,7 +129,7 @@
 
               <h2>{{ post.title }}</h2>
 
-              <p class="lead mb-4">{{ post.description }}</p>
+              <p class="lead mb-4">{{ post.description|safe }}</p>
 
               <p class="mb-4">Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet</p>
 
@@ -342,7 +342,7 @@
                 <div class="portfolio-content">
                   <span class="category">Web Design</span>
                   <h3>{{ p.name }}</h3>
-                  <p>{{ p.description|safe|truncatewords:10 }}</p>
+                  <p>{{ p.description|safe|truncatewords:20 }}</p>
                 </div>
               </div>
             </div>

@@ -255,7 +255,7 @@
                     <div class="timeline-dot"></div>
                     <div class="timeline-right">
                       <h3 class="position">{{ post.title }}</h3>
-                      <p class="description">{{ post.content }}</p>
+                      <p class="description">{{ post.content|safe }}</p>
                     </div>
                   </div>
                 </div>
@@ -279,7 +279,7 @@
                     <div class="timeline-dot"></div>
                     <div class="timeline-right">
                       <h3 class="position">{{ post.level_of_education }}</h3>
-                      <p class="description">{{ post.description }}</p>
+                      <p class="description">{{ post.description|safe }}</p>
                     </div>
                   </div>
                       {% empty %}
@@ -342,7 +342,7 @@
                 <div class="portfolio-content">
                   <span class="category">Web Design</span>
                   <h3>{{ p.name }}</h3>
-                  <p>{{ p.description }}</p>
+                  <p>{{ p.description|safe|truncatewords:10 }}</p>
                 </div>
               </div>
             </div>
@@ -398,7 +398,7 @@
 {#                <div class="row">#}
 {#                  <div class="col-lg-8">#}
 {#                    <h2>{{ testimony.testimonial_name }}</h2>#}
-{#                    <p>{{ testimony.description }}</p>#}
+{#                    <p>{{ testimony.description|safe }}</p>#}
 {#                    <div class="profile d-flex align-items-center">#}
 {#                      <img src="{{ testimony.client_image.url }}" class="profile-img" alt="{{ testimony.client_name }}">#}
 {#                      <div class="profile-info">#}
@@ -461,7 +461,7 @@
                 <div class="service-item">
                   <i class="bi bi-activity icon"></i>
                   <h3><a href="{% url 'services' post.id %}">{{ post.name }}</a></h3>
-                  <p>{{ post.description|truncatewords:10 }}</p>
+                  <p>{{ post.description|safe|truncatewords:10 }}</p>
                 </div>
               </div>
                 {% empty %}

@@ -64,7 +64,7 @@
             <div class="position-sticky" style="top: 40px">
               <div class="portfolio-description">
                 <h2>{{ project.name }}</h2>
-                <p>{{ project.description }}</p>
+                <p>{{ project.description|safe }}</p>
 
 {#                <div class="testimonial-item">#}
 {#                  <p>#}

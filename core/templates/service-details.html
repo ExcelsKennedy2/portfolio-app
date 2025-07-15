@@ -44,7 +44,7 @@
 
       <div class="title-wrapper">
         <h1>Service Details</h1>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.</p>
+        <p>Welcome to the service overview page. Here, you’ll find detailed information about what this service offers, how it can help you achieve your goals, and the value it brings to your project or business. Each service I provide is guided by a focus on quality, efficiency, and client satisfaction—tailored to meet your unique needs.</p>
       </div>
     </div><!-- End Page Title -->
 
@@ -74,14 +74,14 @@
               </script>
               <div class="swiper-wrapper align-items-center">
                 <div class="swiper-slide">
-                  <img src="{% static 'assets/img/services-1.webp' %}" alt="" class="img-fluid" loading="lazy">
+                  <img src="{% static 'assets/img/logo.png' %}" alt="logo" class="img-fluid" loading="lazy">
                 </div>
-                <div class="swiper-slide">
+                <!-- <div class="swiper-slide">
                   <img src="{% static 'assets/img/services-2.webp' %}" alt="" class="img-fluid" loading="lazy">
                 </div>
                 <div class="swiper-slide">
                   <img src="{% static 'assets/img/services-3.webp' %}" alt="" class="img-fluid" loading="lazy">
-                </div>
+                </div> -->
               </div>
               <div class="swiper-pagination"></div>
             </div>
@@ -129,19 +129,19 @@
             <div class="service-info">
               <h4>Service Information</h4>
               <div class="info-item">
-                <i class="bi bi-clock"></i>
-                <h5>Project Duration</h5>
-                <p>3-6 months</p>
+                <i class="bi bi-wrench"></i>
+                <h5>Service name</h5>
+                <p>{{ service.name }}</p>
               </div>
-              <div class="info-item">
+              <!-- <div class="info-item">
                 <i class="bi bi-person-check"></i>
                 <h5>Project Manager</h5>
                 <p>Sarah Johnson</p>
-              </div>
+              </div> -->
               <div class="info-item">
                 <i class="bi bi-telephone"></i>
                 <h5>Contact Support</h5>
-                <p>+1 (555) 123-4567</p>
+                <p>+254 719 534660</p>
               </div>
             </div>
           </div>

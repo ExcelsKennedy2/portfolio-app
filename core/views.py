@@ -38,15 +38,19 @@ def index(request):
 
 def details(request, id):
     project = Project.objects.get(id=id)
+    link = Link.objects.all()
     context = {
         'project': project,
+        'link': link,
     }
     return render(request, 'portfolio-details.html', context)
 
 def services(request, id):
     service = Service.objects.get(id=id)
+    link = Link.objects.all()
     context = {
         'service': service,
+        'link': link,
     }
     return render(request, 'service-details.html', context)
 
@@ -54,6 +58,10 @@ def base(request):
     return render(request, 'base.html')
 
 def contact(request):
+    link = Link.objects.all()
+    context = {
+        'link': link,
+    }
     if request.method == "POST":
         name = request.POST.get('name')
         email = request.POST.get('email')
@@ -61,4 +69,4 @@ def contact(request):
         message = request.POST.get('message')
 
         Contact.objects.create(name=name, email=email, subject=subject, message=message)
-        return render(request, 'index.html')
+        return render(request, 'index.html', context)

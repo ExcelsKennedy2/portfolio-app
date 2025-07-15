@@ -21,10 +21,9 @@
       </nav>
 
       <div class="header-social-links">
-        <a href="#" class="twitter"><i class="bi bi-twitter-x"></i></a>
-        <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
-        <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
-        <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
+      {% for post in link %}
+        <a href="{{ post.link }}" class="{{ post.name }}"><i class="{{ post.icon }}"></i></a>
+      {% endfor %}
       </div>
 
     </div>
@@ -45,7 +44,10 @@
 
       <div class="title-wrapper">
         <h1>Portfolio Details</h1>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.</p>
+        <p>Each project in my portfolio is a reflection of creativity, problem-solving, and technical expertise. 
+          From initial concept to final deployment, I focus on building solutions that are both functional and 
+          user-friendly. Whether it's a web app, a design, or a full-stack system, this page offers a glimpse 
+          into the goals, features, and thought process behind the work—bringing ideas to life through clean code and purposeful design.</p>
       </div>
     </div><!-- End Page Title -->
 
@@ -88,7 +90,7 @@
                 <ul>
                   <li><strong>Category</strong> {{ project.category }}</li>
                   <li><strong>Github Link</strong> <a href="{{ project.source_code}}">{{ project.source_code}}</a></li>
-{#                  <li><strong>Project date</strong> 01 March, 2020</li>#}
+                  <li><strong>Project date</strong> {{ project.created }}</li>
                   <li><strong>Project URL</strong> <a href="{{ project.view_project }}">{{ project.view_project }}</a></li>
                   <li><a href="{{ project.view_project }}" class="btn-visit align-self-start">Visit Website</a></li>
                 </ul>

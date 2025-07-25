@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'ckeditor_uploader',
     'cloudinary',
     'cloudinary_storage',
+    'pwa',
 ]
 
 MIDDLEWARE = [

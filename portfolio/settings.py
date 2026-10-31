@@ -155,11 +155,12 @@ CLOUDINARY_STORAGE = {
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 cloudinary.config(
-    cloud_name="datdnaklu",
-    api_key="343955362941129",
-    api_secret="EHXrX9cyruZl-JxsAzlD_QXx1Hs",
+    cloud_name=os.environ["CLOUDINARY_CLOUD_NAME"],
+    api_key=os.environ["CLOUDINARY_API_KEY"],
+    api_secret=os.environ["CLOUDINARY_API_SECRET"],
     secure=True
 )
+
 PWA_APP_NAME = 'Portfolio'
 PWA_APP_DESCRIPTION = "Excels Kennedy's portfolio"
 PWA_APP_THEME_COLOR = '#0a0a0a'
@@ -179,3 +180,18 @@ PWA_APP_ICONS = [
 ]
 PWA_APP_DIR = 'ltr'
 PWA_APP_LANG = 'en-US'
+
+#production protection
+CSRF_TRUSTED_ORIGINS = [
+    "https://excels-kennedy-portfolio.onrender.com",
+]
+
+SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
+
+SECURE_SSL_REDIRECT = True
+
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
+
+SECURE_CONTENT_TYPE_NOSNIFF = True
+X_FRAME_OPTIONS = "DENY"

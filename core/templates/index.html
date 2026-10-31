@@ -460,7 +460,7 @@
             {% for post in service %}
               <div class="col-md-6" data-aos="fade-up" data-aos-delay="200">
                 <div class="service-item">
-                  <i class="bi bi-activity icon"></i>
+                  <i class="bi bi-lightbulb icon"></i>
                   <h3><a href="{% url 'services' post.id %}">{{ post.name }}</a></h3>
                   <p>{{ post.description|safe|truncatewords:10 }}</p>
                 </div>
